@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    background-color: #252525;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+main {
+    width: 70%;
+    min-width: 840px;
+    min-height: 700px;
+    background-color: white;
+    margin: 40px auto 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+table, tr, td, th {
+    border: 1px solid rgb(200, 200, 200);
+    border-collapse: collapse;
+    padding: 8px;
+    min-width: 80px;
+    min-height: 40px;
+}
+
+table {
+    margin: 0 10px;
+}
+
+th {
+    font-size: 20px;
+}
+
+thead, tr {
+    width: 100%;
+}
+
+button {
+    min-width: 120px;
+    min-height: 30px;
+    border-radius: 8px;
+    border: 0;
+    background-color: cornflowerblue;
+    color: white;
+    margin: 6px ;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+    background-color: rgb(159, 189, 243);
+}
+
+input { 
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+select {
+    min-height: 28px;
+    border-radius: 8px;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background-color: white;
+}
+
+input, select {
+    margin: 6px;
+    border: 1px solid #c2c2c2;
+}
+
+.id {
+    width: 10%;
+    text-align: center;
+}
+
+.name {
+    width: 45%;
+}
+
+.email {
+    width: 45%;
+}
+
+.searchContainer {
+    min-width: 400px;
+    margin: 20px 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#resultTableContainer {
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+#resultTable {
+    margin: 0 auto;
+}
