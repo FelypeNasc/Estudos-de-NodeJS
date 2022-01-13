@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express()
+const app = express();
 const port = 3000;
-let users = require('./data/users.js').users
+let users = require('./data/users.js').users;
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(__dirname + '/public/index.html');
 })
 app.get('/style.css', (req, res) => {
     res.sendFile(__dirname + "/public/style.css");
@@ -14,32 +14,32 @@ app.get('/script.js', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-    let resToSend
+    let resToSend;
     if (req.query.id) {
         // console.log(req.query.id)
-        resToSend = searchInUsers('id', req.query.id)
+        resToSend = searchInUsers('id', req.query.id);
     } else if (req.query.name) {
         // console.log(req.query.name)
-        resToSend = searchInUsers('name', req.query.name)
+        resToSend = searchInUsers('name', req.query.name);
     } else if (req.query.email) {
         // console.log(req.query.email)
-        resToSend = searchInUsers('email', req.query.email)
+        resToSend = searchInUsers('email', req.query.email);
     }
-    res.json(resToSend)
+    res.json(resToSend);
 
 })
 
 function searchInUsers(searchType, searchInput) {
-    let usersFound =[] 
+    let usersFound =[];
     users.forEach((currItem) => {
-        const currItemKey = currItem[searchType]
+        const currItemKey = currItem[searchType];
         if (currItemKey.includes(searchInput)) {
-            usersFound.push(currItem)
+            usersFound.push(currItem);
         }
     })
-    return usersFound
+    return usersFound;
 }
 
 app.listen(port, () => {
-    console.log(`Servidor rodando na URL: http://localhost:${port}`)
+    console.log(`Servidor rodando na URL: http://localhost:${port}`);
 })
