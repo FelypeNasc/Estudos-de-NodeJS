@@ -26,7 +26,6 @@ app.get('/users', (req, res) => {
         resToSend = searchInUsers('email', req.query.email);
     }
     res.json(resToSend);
-
 })
 
 function searchInUsers(searchType, searchInput) {

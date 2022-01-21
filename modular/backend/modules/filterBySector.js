@@ -4,4 +4,4 @@ function filterBySector (_sector) {
     })
 }
 
-export { filterBySector };
+module.exports = filterBySector;
