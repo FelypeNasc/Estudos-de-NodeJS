@@ -21,15 +21,12 @@ app.get('/birthdays', (req, res) => {
 
 app.get('/sectors', (req, res) => {
     let resToSend = filterBySector(req.query.sector, users);
-    console.log(req.query.sector)
     res.json(resToSend)
 })
 
 app.get('/ramals', (req, res) => {
     res.json(filterByRamal(users))
 })
-
-app.get('/')
 
 app.listen(port, () => {
     console.log(`Servidor rodando na URL: http://localhost:${port}`);
