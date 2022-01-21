@@ -25,6 +25,12 @@ app.get('/sectors', (req, res) => {
     res.json(resToSend)
 })
 
+app.get('/ramals', (req, res) => {
+    res.json(filterByRamal(users))
+})
+
+app.get('/')
+
 app.listen(port, () => {
     console.log(`Servidor rodando na URL: http://localhost:${port}`);
 })
