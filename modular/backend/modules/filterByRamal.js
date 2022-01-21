@@ -1,5 +1,12 @@
 function sortByRamal(_arr) {
-    return _arr.sort((a,b) => (a.ramal > b.ramal) ? 1 : ((b.ramal > a.ramal) ? -1 : 0))
+    let newArr = _arr.sort((a,b) => (a.ramal > b.ramal) ? 1 : ((b.ramal > a.ramal) ? -1 : 0))
+    newArr.forEach(element => {
+        delete element.id
+        delete element.sector
+        delete element.email
+        delete element.birthday
+    });
+    return newArr
 }
 
 module.exports = sortByRamal;
