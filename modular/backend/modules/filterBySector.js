@@ -1,5 +1,5 @@
-function filterBySector (_sector) {
-    return users.filter((el) => {
+function filterBySector (_sector, _arr) {
+    return _arr.filter((el) => {
         return el.sector == _sector;
     })
 }

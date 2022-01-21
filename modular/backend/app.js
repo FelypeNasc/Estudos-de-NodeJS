@@ -20,7 +20,9 @@ app.get('/birthdays', (req, res) => {
 })
 
 app.get('/sectors', (req, res) => {
-    let resToSend = filterBySector
+    let resToSend = filterBySector(req.query.sector, users);
+    console.log(req.query.sector)
+    res.json(resToSend)
 })
 
 app.listen(port, () => {
