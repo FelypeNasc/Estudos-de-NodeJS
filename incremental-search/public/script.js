@@ -1,7 +1,7 @@
-const $inputTypeSelect = document.getElementById('searchType');
-const $inputField = document.getElementById('searchInput')
-const $resTBody = document.getElementById('resultTableTBody');
-$inputField.addEventListener('input', sendSearchWithTimeout);
+const inputTypeSelect = document.getElementById('searchType');
+const inputField = document.getElementById('searchInput')
+const resTBody = document.getElementById('resultTableTBody');
+inputField.addEventListener('input', sendSearchWithTimeout);
 let timeoutSet;
 
 function sendSearchWithTimeout() {
@@ -10,9 +10,9 @@ function sendSearchWithTimeout() {
 }
 
 function sendSearch () {
-    $resTBody.innerHTML = '';
-    const inputType = $inputTypeSelect.options[$inputTypeSelect.selectedIndex].value;
-    const inputFieldValue = $inputField.value;
+    resTBody.innerHTML = '';
+    const inputType = inputTypeSelect.options[inputTypeSelect.selectedIndex].value;
+    const inputFieldValue = inputField.value;
 
     //guarda
     if (inputType === 'id' && inputFieldValue.length < 1 || inputType !== 'id' && inputFieldValue.length < 3 ) {
