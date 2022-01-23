@@ -1,8 +1,8 @@
 module.exports = {
     apps: [
       {
-        script: 'npm start',
-        cwd: 'backend/',
+        script: 'backend/app.js',
+        cwd: 'backend',
         name: 'Backend',
         watch: true
       }
