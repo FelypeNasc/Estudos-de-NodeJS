@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
-    <title>Busca de Usuários</title>
+    <title>Employees Search</title>
 </head>
 <body>
     <main>
-        <h2>Busca de Clientes</h2>
-        <div class="searchContainer">
-            <select name="searchType" id="searchType">
+        <h2>Employees Search</h2>
+        <div class="search-container">
+            <div class="buttons-container">
+                <button id="add-new-employee">Add New Employee</button>
+                <button id="view-ramals">Ramals</button>
+            </div>
+            <select name="search-type" id="search-type">
                 <option value="id" selected>ID</option>
                 <option value="name">Name</option>
+                <option value="sector">Sector</option>
                 <option value="email">Email</option>
+                <option value="birthday">Birthday</option>
+                <option value="ramal">Ramal</option>
             </select>
-            <input id= 'searchInput'type="text">
+            <input id= 'search-input'type="text">
         </div>
-        <div id="resultTableContainer">
-            <table id="resultTable">
+        
+        <div id="result-table-container">
+            <table id="result-table">
                  <thead>
                      <tr>
                         <th class="id">ID</th>
@@ -34,7 +43,7 @@
                         <th class="ramal">Ramal</th>
                      </tr>
                  </thead>
-                <tbody id="resultTableTBody">
+                <tbody id="result-table-tbody">
                     <tr>
                         <td>1</td>
                         <td>Geaghan Janek Kelson MacRae</td>
@@ -47,6 +56,9 @@
             </table>
         </div>
     </main>
+    <section>
+        
+    </section>
     <script defer src="script.js"></script>
 </body>
 </html>

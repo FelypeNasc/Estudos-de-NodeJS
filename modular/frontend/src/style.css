@@ -57,6 +57,29 @@ input, select {
     border: 1px solid #c2c2c2;
 }
 
+.buttons-container {
+    display: flex;
+    margin: 0 40px;
+    align-items: center;
+}
+
+.buttons-container button {
+    min-width: 120px;
+    min-height: 30px;
+    border-radius: 8px;
+    border: 0;
+    background-color: cornflowerblue;
+    color: white;
+    margin: 6px ;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.buttons-container button:hover {
+    background-color: rgb(168, 196, 248);
+}
+
 .id {
     width: 10%;
     text-align: center;
@@ -70,19 +93,23 @@ input, select {
     width: 45%;
 }
 
-.searchContainer {
+.search-container {
     min-width: 400px;
     margin: 20px 0 20px;
     display: flex;
     justify-content: center;
 }
 
-#resultTableContainer {
+#add-new-employee {
+    min-width: 160px;
+}
+
+#result-table-container {
     width: 80%;
     min-width: 860px;
     margin: 0 auto 40px;
 }
 
-#resultTable {
+#result-table {
     margin: 0 auto;
 }
