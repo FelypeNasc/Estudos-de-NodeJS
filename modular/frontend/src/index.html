@@ -30,7 +30,6 @@
             </select>
             <input id= 'search-input'type="text">
         </div>
-        
         <div id="result-table-container">
             <table id="result-table">
                  <thead>
@@ -56,8 +55,42 @@
             </table>
         </div>
     </main>
-    <section>
-        
+    <section class="new-employee-container hide" id="new-employee-container">
+        <div id="new-employee-screen">
+            <button id="new-employee-exit-button">X</button>
+            <h2>Add New Employee</h2>
+            <div class="inputs-container">
+                <div class="inputs-first-row">
+                    <div>
+                        <p>ID</p>
+                        <input type="text" name="" id="new_employee_id_field">
+                    </div>
+                    <div>
+                        <p>Name</p>
+                        <input type="text" name="" id="new_employee_name_field">
+                    </div>
+                    <div>
+                        <p>Sector</p>
+                        <input type="text" name="" id="new_employee_sector_field">
+                    </div>
+                </div>
+                <div class="inputs-second-row">
+                    <div>
+                        <p>Email</p>
+                        <input type="text" name="" id="new_employee_email_field">   
+                    </div>
+                    <div>
+                        <p>Birthday</p>
+                        <input type="date" name="" id="new_employee_birthday_field">   
+                    </div>
+                    <div>
+                        <p>Ramal</p>
+                        <input type="text" name="" id="new_employee_ramal_field">
+                    </div>
+                </div>
+            </div>
+            <button id="new_employee_send_button">Send</button>
+        </div>
     </section>
     <script defer src="script.js"></script>
 </body>
