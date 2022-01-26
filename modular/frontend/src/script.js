@@ -6,12 +6,7 @@ const ramalsBtn = document.getElementById('view-ramals')
 // new employee
 const newEmployeeBtn = document.getElementById('add-new-employee');
 const exitBtn = document.getElementById('new-employee-exit-button');
-const idField = document.getElementById('new_employee_id_field');
-const idName = document.getElementById('new_employee_name_field');
-const idSector = document.getElementById('new_employee_sector_field');
-const idEmail = document.getElementById('new_employee_email_field');
-const idBirthday = document.getElementById('new_employee_birthday_field');
-const idRamal = document.getElementById('new_employee_ramal_field');
+
 
 // listeners
 newEmployeeBtn.addEventListener('click', newEmployeeScreen);
@@ -29,10 +24,10 @@ function sendSearch () {
     const inputType = inputTypeSelect.options[inputTypeSelect.selectedIndex].value;
     const inputFieldValue = inputField.value;
 
-    const searchRequest = fetch(`/users?${inputType}=${inputFieldValue}`);
+    const appUrl = 'http://localhost:3040/'
 
     function addToTable (id, name, email, sector, birthday, ramal) {
-        $resTBody.innerHTML += 
+        resTBody.innerHTML += 
         `
         <tr>
             <td>${id}</td>
@@ -45,14 +40,15 @@ function sendSearch () {
         `;
     }
 
-    searchRequest
+    fetch(appUrl + `users?${inputType}=${inputFieldValue}`)
     .then((res) => {
         const resJson = res.json()
+        console.log(resJson)
         return resJson;
     })
     .then((users)=> {
         users.forEach((currItem) => {
-            addToTable(currItem.id, currItem.name, currItem.email, currItem.sector, currItem.birthday, currItem.ramal);
+            addToTable(currItem.id, currItem.fullName, currItem.email, currItem.department, currItem.birthday, currItem.extension);
         })
         console.log(users);
     })
@@ -65,4 +61,14 @@ function newEmployeeScreen() {
     } else {
         newEmployeeScreen.classList.add('hide');
     }
+}
+
+function addNewEmployee () {
+    const id = document.getElementById('new_employee_id_field').value;
+    const name = document.getElementById('new_employee_name_field').value;
+    const sector = document.getElementById('new_employee_sector_field').value;
+    const email = document.getElementById('new_employee_email_field').value;
+    const birthday = document.getElementById('new_employee_birthday_field').value;
+    const ramal = document.getElementById('new_employee_ramal_field').value;
+    const searchRequest = fetch(`/add-new-employee?id=${id}&name=${name}&sector=${sector}&email=${email}&birthday${birthday}&ramal=${ramal}`);
 }

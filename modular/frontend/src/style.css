@@ -196,8 +196,6 @@ input, select {
     font-size: 18px;
 }
 
-
-
 #new_employee_send_button:hover {
     background-color: rgb(168, 196, 248);
 }
@@ -211,8 +209,6 @@ input, select {
     min-width: 860px;
     margin: 0 auto 40px;
 }
-
-
 
 #result-table {
     margin: 0 auto;
