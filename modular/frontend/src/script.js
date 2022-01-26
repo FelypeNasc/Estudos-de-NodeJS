@@ -1,8 +1,9 @@
 // page
 const inputTypeSelect = document.getElementById('search-type');
-const inputField = document.getElementById('search-input')
-const resTBody = document.getElementById('result-table-tbody');
+const inputField = document.getElementById('search-input');
 const ramalsBtn = document.getElementById('view-ramals');
+const resTableContainer = document.getElementById('result-table-container');
+const ramalsTableContainer = document.getElementById('ramals-table-container');
 const appUrl = 'http://localhost:3040/';
 
 // new employee
@@ -12,6 +13,7 @@ const exitBtn = document.getElementById('new-employee-exit-button');
 // listeners
 newEmployeeBtn.addEventListener('click', changeToNewEmployeeScreen);
 exitBtn.addEventListener('click', changeToNewEmployeeScreen);
+ramalsBtn.addEventListener('click', verifyRamals);
 inputField.addEventListener('input', sendSearchWithTimeout);
 let timeoutSet;
 
@@ -21,34 +23,33 @@ function sendSearchWithTimeout() {
 }
 
 function sendSearch () {
+    const resTBody = document.getElementById('result-table-tbody');
     resTBody.innerHTML = '';
     const inputType = inputTypeSelect.options[inputTypeSelect.selectedIndex].value;
     const inputFieldValue = inputField.value;
 
-
-    function addToTable (id, name, email, department, birthday, ramal) {
-        resTBody.innerHTML += 
-        `
-        <tr>
-            <td>${id}</td>
-            <td>${name}</td>
-            <td>${department}</td>
-            <td>${email}</td>
-            <td>${birthday}</td>
-            <td>${ramal}</td>
-        </tr>
-        `;
+    if (resTableContainer.classList.contains('hide')) {
+        resTableContainer.classList.remove('hide');
     }
 
     fetch(appUrl + `users?${inputType}=${inputFieldValue}`)
     .then((res) => {
         const resJson = res.json()
-        console.log(resJson)
         return resJson;
     })
     .then((users)=> {
         users.forEach((currItem) => {
-            addToTable(currItem.id, currItem.fullName, currItem.email, currItem.department, currItem.birthday, currItem.extension);
+            resTBody.innerHTML += 
+            `
+            <tr>
+                <td>${currItem.id}</td>
+                <td>${currItem.fullName}</td>
+                <td>${currItem.department}</td>
+                <td>${currItem.email}</td>
+                <td>${currItem.birthday}</td>
+                <td>${currItem.extension}</td>
+            </tr>
+            `;
         })
         console.log(users);
     })
@@ -69,7 +70,38 @@ function addNewEmployee () {
     const department = document.getElementById('new_employee_department_field').value;
     const email = document.getElementById('new_employee_email_field').value;
     const birthday = document.getElementById('new_employee_birthday_field').value;
-    const ramal = document.getElementById('new_employee_ramal_field').value;
-    const searchRequest = fetch(`${appUrl}add-new-employee?id=${id}&name=${name}&department=${department}&email=${email}&birthday${birthday}&ramal=${ramal}`);
+    const ramal = document.getElementById(' ').value;
+    const searchRequest = fetch(`${appUrl}add-new-employee?id=${id}&name=${name}&department=${department}&email=${email}&birthday${birthday}&ramal=${ramal}`, 
+        {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({a: 1, b: 'Textual content'})
+        }
+    );
 }
 
+function verifyRamals() {
+    fetch(`${appUrl}ramals`)
+    .then ((res) => {
+        return res.json();
+    })
+    .then ((ramals) => {
+        const ramalsTBody = document.getElementById('ramals-table-tbody');
+        ramalsTBody.innerHTML = '';
+
+        resTableContainer.classList.add('hide');
+        ramalsTableContainer.classList.remove('hide')
+        
+        ramals.forEach((currItem) => {
+            ramalsTBody.innerHTML += `
+            <tr>
+                <td>${currItem.extension}</td>
+                <td>${currItem.fullName}</td>
+            </tr>
+            `
+        })
+    })
+}

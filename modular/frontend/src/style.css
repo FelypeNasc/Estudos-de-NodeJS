@@ -221,6 +221,16 @@ input, select {
     margin: 0 auto;
 }
 
+.ramals-name {
+    width: 200px;
+}
+
+
+
+#ramals-table-tbody tr > td, #result-table-tbody tr > td {
+    text-align: center;
+}
+
 .hide {
     display: none;
 }
