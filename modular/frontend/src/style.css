@@ -82,16 +82,23 @@ input, select {
 }
 
 .id {
-    width: 10%;
-    text-align: center;
+    width: 8%;
 }
 
 .name {
-    width: 45%;
+    width: 40%;
+}
+
+.sector {
+    width: 20%;
 }
 
 .email {
-    width: 45%;
+    width: 30%;
+}
+
+.birthday {
+    width: 12%;
 }
 
 .search-container {

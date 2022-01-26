@@ -11,7 +11,7 @@ let users = require('./data/users2.json');
 
 // modules
 const filterByBirthday = require(__dirname +'/modules/filterByBirthday.js');
-const filterBySector = require(__dirname +'/modules/filterBySector.js');
+const filterByDepartment = require(__dirname +'/modules/filterByDepartment.js');
 const filterByRamal = require(__dirname +'/modules/filterByRamal.js');
 const searchInUsers = require(__dirname + '/modules/searchInUsers.js');
 
@@ -24,8 +24,8 @@ app.get('/birthdays', (req, res) => {
     res.json(resToSend);
 })
 
-app.get('/sectors', (req, res) => {
-    let resToSend = filterBySector(req.query.sector, users);
+app.get('/departaments', (req, res) => {
+    let resToSend = filterByDepartment(req.query.department, users);
     res.json(resToSend);
 })
 
@@ -38,13 +38,10 @@ app.get('/users', (req, res) => {
     if (req.query.id) {
         resToSend = searchInUsers('id', req.query.id, users);
     } else if (req.query.name) {
-        // console.log(req.query.name)
         resToSend = searchInUsers('fullName', req.query.name, users);
     } else if (req.query.email) {
-        // console.log(req.query.email)
         resToSend = searchInUsers('email', req.query.email, users);
     }
-    // console.log(resToSend)
     res.json(resToSend);
 })
 
