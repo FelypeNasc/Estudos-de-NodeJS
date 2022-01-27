@@ -58,7 +58,7 @@ app.post('/add-new-employee', (req, res) => {
         if (err) throw err;
         fs.writeFile('./data/users.json', 
             JSON.stringify(batata(data, req.body)), 
-            (err) => {if (err) throw err; console.log('funcionou essa desgraça')}
+            (err) => {if (err) throw err}
         )
     })
     res.send(201);

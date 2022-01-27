@@ -56,22 +56,28 @@ function sendSearch () {
     })
 }
 
+// function to change the new employee register view
 function changeToNewEmployeeScreen() {
     const newEmployeeScreen = document.getElementById('new-employee-container');
+    const newEmployeeAdded = document.getElementById('new-employee-response');
     if (newEmployeeScreen.classList.contains('hide')) {
         newEmployeeScreen.classList.remove('hide');
+        newEmployeeAdded.innerText = '';
     } else {
         newEmployeeScreen.classList.add('hide');
+        
     }
 }
 
 function addNewEmployee () {
-    const id = document.getElementById('new_employee_id_field').value;
-    const name = document.getElementById('new_employee_name_field').value;
-    const department = document.getElementById('new_employee_department_field').value;
-    const email = document.getElementById('new_employee_email_field').value;
-    const birthday = document.getElementById('new_employee_birthday_field').value;
-    const ramal = document.getElementById('new_employee_ramal_field').value;
+    const birthday = document.getElementById('new-employee-birthday-field').value;
+    const firstName = document.getElementById('new-employee-firstName-field').value;
+    const lastName = document.getElementById('new-employee-lastName-field').value;
+    const fullName = `${firstName} ${lastName}`
+    const email = document.getElementById('new-employee-email-field').value;
+    const department = document.getElementById('new-employee-department-field').value;
+    const extension = document.getElementById('new-employee-ramal-field').value;
+    const id = document.getElementById('new-employee-id-field').value;
 
     fetch(`${appUrl}add-new-employee`, {
             method: 'POST',
@@ -79,7 +85,7 @@ function addNewEmployee () {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
-            body: JSON.stringify({id, name, department, email, birthday, ramal})
+            body: JSON.stringify({birthday, firstName, lastName, fullName, email, department, extension, id})
         }
     )
     .then((res) => {
@@ -97,9 +103,9 @@ function verifyRamals() {
     .then ((ramals) => {
         const ramalsTBody = document.getElementById('ramals-table-tbody');
         ramalsTBody.innerHTML = '';
-
+    
         resTableContainer.classList.add('hide');
-        ramalsTableContainer.classList.remove('hide')
+        ramalsTableContainer.classList.remove('hide');
         
         ramals.forEach((currItem) => {
             ramalsTBody.innerHTML += `
@@ -109,5 +115,6 @@ function verifyRamals() {
             </tr>
             `
         })
+
     })
 }
