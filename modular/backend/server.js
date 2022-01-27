@@ -1,23 +1,24 @@
 // config
-const fs = require('fs')
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3040;
 const cors = require('cors');
+
+// app uses
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // imports
-let users = require('./data/users2.json');
+let users = require('./data/users.json');
+const { status } = require('express/lib/response');
 
 // modules
 const filterByBirthday = require(__dirname +'/modules/filterByBirthday.js');
 const filterByDepartment = require(__dirname +'/modules/filterByDepartment.js');
 const filterByRamal = require(__dirname +'/modules/filterByRamal.js');
 const searchInUsers = require(__dirname + '/modules/searchInUsers.js');
-
-app.get('/', (req, res) => {
-    // res.sendFile(__dirname + '/public/index.html');
-})
 
 app.get('/birthdays', (req, res) => {
     let resToSend = filterByBirthday(req.query.month, users);
@@ -44,6 +45,24 @@ app.get('/users', (req, res) => {
     }
     res.json(resToSend);
 })
+
+function batata (data, reg) {
+    let arr = JSON.parse(data)
+    arr.push(reg);
+    return arr
+}
+
+app.post('/add-new-employee', (req, res) => {
+    console.log(req.body)
+    fs.readFile('./data/users.json', (err, data) => {
+        if (err) throw err;
+        fs.writeFile('./data/users.json', 
+            JSON.stringify(batata(data, req.body)), 
+            (err) => {if (err) throw err; console.log('funcionou essa desgraça')}
+        )
+    })
+    res.send(201);
+});
 
 app.listen(port, () => {
     console.log(`Servidor escutando a URL: http://localhost:${port}`);

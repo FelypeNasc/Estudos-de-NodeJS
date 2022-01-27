@@ -225,7 +225,9 @@ input, select {
     width: 200px;
 }
 
-
+#new-employee-response {
+    color: rgb(47, 187, 47);
+}
 
 #ramals-table-tbody tr > td, #result-table-tbody tr > td {
     text-align: center;

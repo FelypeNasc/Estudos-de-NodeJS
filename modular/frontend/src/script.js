@@ -9,16 +9,22 @@ const appUrl = 'http://localhost:3040/';
 // new employee
 const newEmployeeBtn = document.getElementById('add-new-employee');
 const exitBtn = document.getElementById('new-employee-exit-button');
+const sendNewEmployee = document.getElementById('new-employee-send-button');
 
 // listeners
 newEmployeeBtn.addEventListener('click', changeToNewEmployeeScreen);
 exitBtn.addEventListener('click', changeToNewEmployeeScreen);
 ramalsBtn.addEventListener('click', verifyRamals);
 inputField.addEventListener('input', sendSearchWithTimeout);
+sendNewEmployee.addEventListener('click', addNewEmployee)
 let timeoutSet;
 
 function sendSearchWithTimeout() {
     clearTimeout(timeoutSet)
+    if (resTableContainer.classList.contains('hide')) {
+        resTableContainer.classList.remove('hide');
+        ramalsTableContainer.classList.add('hide');
+    }
     timeoutSet = setTimeout(sendSearch, 2000);
 }
 
@@ -27,10 +33,6 @@ function sendSearch () {
     resTBody.innerHTML = '';
     const inputType = inputTypeSelect.options[inputTypeSelect.selectedIndex].value;
     const inputFieldValue = inputField.value;
-
-    if (resTableContainer.classList.contains('hide')) {
-        resTableContainer.classList.remove('hide');
-    }
 
     fetch(appUrl + `users?${inputType}=${inputFieldValue}`)
     .then((res) => {
@@ -51,7 +53,6 @@ function sendSearch () {
             </tr>
             `;
         })
-        console.log(users);
     })
 }
 
@@ -70,17 +71,22 @@ function addNewEmployee () {
     const department = document.getElementById('new_employee_department_field').value;
     const email = document.getElementById('new_employee_email_field').value;
     const birthday = document.getElementById('new_employee_birthday_field').value;
-    const ramal = document.getElementById(' ').value;
-    const searchRequest = fetch(`${appUrl}add-new-employee?id=${id}&name=${name}&department=${department}&email=${email}&birthday${birthday}&ramal=${ramal}`, 
-        {
+    const ramal = document.getElementById('new_employee_ramal_field').value;
+
+    fetch(`${appUrl}add-new-employee`, {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
-            body: JSON.stringify({a: 1, b: 'Textual content'})
+            body: JSON.stringify({id, name, department, email, birthday, ramal})
         }
-    );
+    )
+    .then((res) => {
+        if(res.status == 201) {
+            document.getElementById('new-employee-response').innerText = 'Employee Registered'
+        }
+    }); 
 }
 
 function verifyRamals() {

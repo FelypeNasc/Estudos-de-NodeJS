@@ -73,23 +73,21 @@
             <h2>Add New Employee</h2>
             <div class="inputs-container">
                 <div class="inputs-first-row">
-                    <!-- <p>ID</p> -->
                     <input type="text" name="" id="new_employee_id_field" placeholder='ID'>
-                    <!-- <p>Name</p> -->
-                    <input type="text" name="" id="new_employee_name_field" placeholder='Fullname'>
-                    <!-- <p>Sector</p> -->
-                    <input type="text" name="" id="new_employee_sector_field" placeholder='Sector'>
+                    <input type="text" name="" id="new_employee_ramal_field" placeholder='Ramal'>
+                    <input type="text" name="" id="new_employee_department_field" placeholder='Department'>
                 </div>
                 <div class="inputs-second-row">
-                    <!-- <p>Email</p> -->
+                    <input type="text" name="" id="new_employee_name_field" placeholder='Name'>
+                    <input type="text" name="" id="new_employee_surname_field" placeholder='Surname'>
+                </div>
+                <div class="inputs-third-row">
+                    <input type="date" name="" id="new_employee_birthday_field" placeholder='Birthday'>
                     <input type="text" name="" id="new_employee_email_field" placeholder='Email'>   
-                    <!-- <p>Birthday</p> -->
-                    <input type="date" name="" id="new_employee_birthday_field" placeholder='Birthday'>   
-                    <!-- <p>Ramal</p> -->
-                    <input type="text" name="" id="new_employee_ramal_field" placeholder='Ramal'>
                 </div>
             </div>
-            <button id="new_employee_send_button">Send</button>
+            <button id="new-employee-send-button">Send</button>
+            <div id="new-employee-response"></div>
         </div>
     </section>
     <script defer src="script.js"></script>
