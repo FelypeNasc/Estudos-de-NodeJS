@@ -27,19 +27,18 @@ function searchInUsers(searchOption, searchInput) {
 // routes
 app.post("/add-new-customer", (req, res) => {
     users.push(req.body);
-    console.log(users);
     console.log('registered');
     res.sendStatus(201);
 });
 
 app.get("/search-customers", (req, res) => {
     let usersFound = searchInUsers('id', req.query.id);
-    console.log(usersFound)
     res.json(usersFound);
 })
 
-app.delete("/delete-customers", (req, res) => {
-    
+app.delete("/delete-customer", (req, res) => {
+    users.splice(req.body.index, 1);
+    res.json(users);
 })
 
 // listen
