@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Read - Add - Delete</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="inputs">
-        <input type="number" placeholder="ID">
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Email">
-    </div>
+    <section id="inputs">
+        <p><span>Add new customer </span><span id="new-customer-response"></span></p>
+        <input type="number" placeholder="ID" id="new-customer-id">
+        <input type="text" placeholder="Name" id="new-customer-name">
+        <input type="text" placeholder="Email" id="new-customer-email">
+        <button id="send-new-customer">Send</button>
+    </section>
+    <section id="search-customer">
+        <p>Search Customers</p>
+        <select name="search-type" id="search-type">
+            <option value="ID">ID</option>
+            <option value="Name">Name</option>
+            <option value="Email">Email</option>
+        </select>
+        <input type="text" placeholder="Type here">
+        <button id="send-search">Send</button>
+    </section>
+    <section id="customers-found">
+        <table>
+            <thead>
+                <th class="id">ID</th>
+                <th class="name">Name</th>
+                <th class="email">Email</th>
+                <th class="delete">Delete</th>
+            </thead>
+            <tbody id="customers-found-tbody"></tbody>
+        </table>
+    </section>
 </body>
+
 </html>
