@@ -1,0 +1,7 @@
+table, tr, td, th {
+    border: 1px solid rgb(200, 200, 200);
+    border-collapse: collapse;
+    padding: 8px;
+    min-width: 80px;
+    min-height: 40px;
+}

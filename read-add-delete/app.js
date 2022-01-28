@@ -12,12 +12,35 @@ const users = [
     { id: 1, name: "Felype Nascimento", email: "felype.nasc@hotmail.com" },
 ];
 
+// functions 
+function searchInUsers(searchOption, searchInput) {  
+    let usersFound = [];
+    users.forEach((currItem) => {
+        const currItemKey = String(currItem[searchOption]);
+        if (currItemKey.includes(searchInput)) {
+            usersFound.push(currItem);
+        }
+    });
+    return usersFound
+}
+
 // routes
 app.post("/add-new-customer", (req, res) => {
     users.push(req.body);
-    console.log('Ok')
+    console.log(users);
+    console.log('registered');
     res.sendStatus(201);
 });
+
+app.get("/search-customers", (req, res) => {
+    let usersFound = searchInUsers('id', req.query.id);
+    console.log(usersFound)
+    res.json(usersFound);
+})
+
+app.delete("/delete-customers", (req, res) => {
+    
+})
 
 // listen
 app.listen(port, () => {

@@ -21,6 +21,7 @@ const filterByDepartment = require(__dirname +
 const filterByRamal = require(__dirname + "/modules/filterByRamal.js");
 const searchInUsers = require(__dirname + "/modules/searchInUsers.js");
 
+// routes
 app.get("/birthdays", (req, res) => {
     let resToSend = filterByBirthday(req.query.month, users);
     res.json(resToSend);
@@ -47,7 +48,7 @@ app.get("/users", (req, res) => {
     res.json(resToSend);
 });
 
-function batata(data, reg) {
+function pushToUsers(data, reg) {
     let arr = JSON.parse(data);
     arr.push(reg);
     return arr;
@@ -59,7 +60,7 @@ app.post("/add-new-employee", (req, res) => {
         if (err) throw err;
         fs.writeFile(
             "./data/users.json",
-            JSON.stringify(batata(data, req.body)),
+            JSON.stringify(pushToUsers(data, req.body)),
             (err) => {
                 if (err) throw err;
             }
