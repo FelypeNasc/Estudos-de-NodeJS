@@ -3,7 +3,6 @@
 // new product html variables
 const newID = document.getElementById("new-product-id");
 const newName = document.getElementById("new-product-name");
-const newEmail = document.getElementById("new-product-email");
 const sendNewProductButton = document.getElementById("send-new-product");
 
 // search products html variables
@@ -16,15 +15,14 @@ sendNewProductButton.addEventListener("click", sendNewProduct);
 sendSearchButton.addEventListener("click", searchProducts);
 
 // client functions
-function renderTable(users) {
+function renderTable(products) {
     productsFoundTBody.innerText = "";
     let count = 0;
-    users.forEach((currItem) => {
+    products.forEach((currItem) => {
         productsFoundTBody.innerHTML += `
         <tr>
             <td>${currItem.id}</td>
             <td>${currItem.name}</td>
-            <td>${currItem.email}</td>
             <td><button id="${count}" class='delete-button'>X</button></td>
         </tr>
         `;
@@ -44,28 +42,33 @@ function sendNewProduct() {
         body: JSON.stringify({
             id: newID.value,
             name: newName.value,
-            email: newEmail.value,
         }),
     };
-    fetch("/add-new-product", requestOptions).then((res) => {
-        if (res.status == 201) {
+    fetch("/products", requestOptions).then((res) => {
+        if (res.status == 201)
             alert("Product Registered");
-        }
+        else if (res.status == 406)
+            alert("ERROR: This ID is already being used");
     });
 }
 
 function searchProducts() {
-    const searchOption =
-        searchOptionField.options[
-            searchOptionField.selectedIndex
-        ].value.toLowerCase();
-    const searchField = document.getElementById("search-field").value;
-    fetch(`/search-products?${searchOption}=${searchField}`)
+    const id = document.getElementById("search-field").value;
+
+    function verifyIDField() {
+        if (id == "all") 
+            return `/products/all`;
+        else 
+            return `products?id=${id}`;
+        
+    }
+    
+    fetch(verifyIDField())
         .then((res) => {
             return res.json();
         })
-        .then((users) => {
-            renderTable(users);
+        .then((products) => {
+            renderTable(products);
         });
 }
 
@@ -77,14 +80,18 @@ function deleteProduct(index) {
             index,
         }),
     };
-    fetch("/delete-product", requestOptions)
+    fetch("/products", requestOptions)
         .then((res) => {
             if (res.status == 200) {
                 alert("Product Deleted");
             }
             return res.json();
         })
-        .then((users) => {
-            renderTable(users);
+        .then((products) => {
+            renderTable(products);
         });
 }
+
+// function changeProductName () {
+//     const id = 
+// }

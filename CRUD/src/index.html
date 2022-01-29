@@ -12,19 +12,21 @@
 
 <body>
     <section id="inputs">
-        <p><span>Add new product </span><span id="new-product-response"></span></p>
+        <p>Add new product</p>
         <input type="number" placeholder="ID" id="new-product-id">
         <input type="text" placeholder="Name" id="new-product-name">
         <button id="send-new-product">Send</button>
     </section>
+    <section id="inputs">
+        <p>Change product name</p>
+        <input type="number" placeholder="ID" id="change-product-id">
+        <input type="text" placeholder="New name" id="change-product-name">
+        <button id="send-change-product">Change</button>
+    </section>
     <section id="search-product">
-        <p><span>Search Products</span><span id="product-delete-response"></span></p>
-        <select name="search-type" id="search-type">
-            <option value="ID" >ID</option>
-            <option value="Name">Name</option>
-            <option value="Email">Email</option>
-        </select>
-        <input type="text" placeholder="Type here" id="search-field">
+        <p>Search Products</p>
+        <small>Type "all" to view all products</small><br>
+        <input type="text" placeholder="Type product ID here" id="search-field">
         <button id="send-search">Search</button>
     </section>
     <section id="products-found">
@@ -32,7 +34,6 @@
             <thead>
                 <th class="id">ID</th>
                 <th class="name">Name</th>
-                <th class="email">Email</th>
                 <th class="delete">Delete</th>
             </thead>
             <tbody id="products-found-tbody"></tbody>
