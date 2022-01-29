@@ -39,7 +39,7 @@ app.post("/products", (req, res) => {
         console.log("não tem produto com esse ID");
         products.push(req.body);
         console.log("registered");
-        res.sendStatus(201);
+        res.json(products).status(201);
     }
 });
 
@@ -48,7 +48,16 @@ app.delete("/products", (req, res) => {
     res.json(products);
 });
 
-// app.put()
+app.put("/products", (req, res) => {
+    if (products.some((obj) => obj.id == req.body.id)) {
+        const index = products.findIndex(element => element.id == req.body.id)
+        products[index].name = req.body.name;
+        console.log(products)
+        res.json(products)
+    } else {
+        res.sendStatus(404)
+    }
+})
 
 // listen
 app.listen(port, () => {
