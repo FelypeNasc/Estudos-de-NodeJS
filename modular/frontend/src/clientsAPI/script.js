@@ -4,7 +4,7 @@ const inputField = document.getElementById("search-input");
 const ramalsBtn = document.getElementById("view-ramals");
 const resTableContainer = document.getElementById("result-table-container");
 const ramalsTableContainer = document.getElementById("ramals-table-container");
-const appUrl = "http://localhost:3040/";
+const appUrl = "http://localhost:3040/clients/";
 
 // new employee
 const newEmployeeBtn = document.getElementById("add-new-employee");
