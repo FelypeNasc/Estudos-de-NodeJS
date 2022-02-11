@@ -5,7 +5,7 @@ const port = 3000;
 
 // static routes
 app.use('/clients', express.static('./src/clientsAPI'));
-app.use('/games', express.static('./src/gamesAPI'));
+app.use('/gamesmagazine', express.static('./src/gamesmagazine'));
 
 app.listen(port, () => {
     console.log(`Página rodando na URL: http://localhost:${port}`);

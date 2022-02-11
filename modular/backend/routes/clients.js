@@ -1,8 +1,7 @@
 // config
-const fs = require("fs");
+
 const express = require("express");
 const router = express.Router();
-const app = express();
 
 // imports
 let users = require("../data/clientsAPI/users.json");
@@ -11,7 +10,8 @@ let users = require("../data/clientsAPI/users.json");
 const filterByBirthday = require("../modules/clientsAPI/filterByBirthday.js");
 const filterByDepartment = require("../modules/clientsAPI/filterByDepartment.js");
 const filterByRamal = require("../modules/clientsAPI/filterByRamal.js");
-const searchInUsers = require("../modules/clientsAPI/searchInUsers");
+const searchInUsers = require("../modules/clientsAPI/searchInUsers.js");
+const addReqBodyToJSON = require("../modules/addtojson.js");
 
 // routes
 router.get("/birthdays", (req, res) => {
@@ -40,25 +40,10 @@ router.get("/users", (req, res) => {
     res.json(resToSend);
 });
 
-function pushToUsers(data, reg) {
-    let arr = JSON.parse(data);
-    arr.push(reg);
-    return arr;
-}
-
 router.post("/add-new-employee", (req, res) => {
     console.log(req.body);
-    fs.readFile("./data/users.json", (err, data) => {
-        if (err) throw err;
-        fs.writeFile(
-            "./data/users.json",
-            JSON.stringify(pushToUsers(data, req.body)),
-            (err) => {
-                if (err) throw err;
-            }
-        );
-    });
-    res.send(201);
+    addReqBodyToJSON ("./data/clientsAPI/users.json", req.body)    
+    res.sendStatus(201);
 });
 
 module.exports = router;
