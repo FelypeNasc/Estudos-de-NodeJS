@@ -1,3 +1,11 @@
 [
-    
+    {
+        "id": 1,
+        "game": "Final Fantasy Tactics",
+        "year": 1997,
+        "genre": "RPG",
+        "multiplayer": false,
+        "offline": true,
+        "crossplataform": false
+    }
 ]
