@@ -7,11 +7,11 @@ const router = express.Router();
 let users = require("../data/clientsAPI/users.json");
 
 // modules
-const filterByBirthday = require("../modules/clientsAPI/filterByBirthday.js");
-const filterByDepartment = require("../modules/clientsAPI/filterByDepartment.js");
-const filterByRamal = require("../modules/clientsAPI/filterByRamal.js");
-const searchInUsers = require("../modules/clientsAPI/searchInUsers.js");
-const addReqBodyToJSON = require("../modules/addtojson.js");
+const filterByBirthday = require("../modules/clientsAPI/filterByBirthday");
+const filterByDepartment = require("../modules/clientsAPI/filterByDepartment");
+const filterByRamal = require("../modules/clientsAPI/filterByRamal");
+const searchInUsers = require("../modules/clientsAPI/searchInUsers");
+const addReqBodyToJSON = require("../modules/addReqToJSON");
 
 // routes
 router.get("/birthdays", (req, res) => {

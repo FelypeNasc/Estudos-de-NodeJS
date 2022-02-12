@@ -19,4 +19,6 @@ function addReqBodyToJSON (filePath, reqBody) {
     })
 }
 
+// use this to import: const addReqToJSON = require("../modules/addReqToJSON");
+
 module.exports = addReqBodyToJSON;

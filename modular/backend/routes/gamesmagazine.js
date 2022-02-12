@@ -3,12 +3,21 @@ const express = require("express");
 const router = express.Router();
 
 // data
-let games = require("../data/gamesAPI/games.json");
+const gamesJSONPath = "./data/gamesAPI/games.json";
+const gamesJSON = require('../data/gamesAPI/games.json');
 
 // modules
+const addReqToJSON = require("../modules/addReqToJSON");
 
-router.post("/test", (req, res) => {
-    console.log(req.body);
+
+router.post("/add-new-game", (req, res) => {
+    try {
+        addReqToJSON(gamesJSONPath, req.body);
+        res.json(gamesJSON)
+    }
+    catch (err) {
+        console.log(err);
+    }
 })
 
 module.exports = router;

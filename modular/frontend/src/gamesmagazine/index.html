@@ -30,10 +30,13 @@ Modelo do objeto game
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="style.css">
 	<title>Games Magazine</title>
 </head>
 <body>
-    <header>Games Magazine</header>
+    <header>
+		<h2>Games Magazine</h2> 
+	</header>
     <main>
 		<form action="">
 			<div id="text-input-container">
@@ -62,18 +65,24 @@ Modelo do objeto game
 			</div>
 			<button type="button" id="send-button">Register</button>
 		</form>
-		<!-- {
-			id: "",
-			game: "",
-			year: "",
-			genre: "",
-			multiplayer: "",
-			offline: "",
-			crossplataform: ""
-		} -->
 		
 		<!-- https://maps.google.com/maps?q=22030040&t=&z=13&ie=UTF8&iwloc=&output=embed -->
-
+		<div id="result">
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Game</th>
+						<th>Year</th>
+						<th>Multiplayer</th>
+						<th>Offline</th>
+						<th>Cross-Plataform</th>
+					</tr>
+				</thead>
+				<tbody id="res-tbody">
+				</tbody>
+			</table>
+		</div>
 	</main>
 	<script src="script.js"></script>
 </body>
