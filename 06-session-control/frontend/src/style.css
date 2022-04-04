@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    color: #fff;
+    background-color: #0d1117;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-inputs-container,
+.login-container, .token-verification-container {
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+}
+
+button {
+    width: 140px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e2c8b;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+button:hover {
+    background-color: #7756b4;
+}
+
+button:active {
+    background-color: #321766;
+}
+
+span {
+    text-align: center;
+    color: #f34b4b;
+    font-size: 12px;
+    margin: 10px 0;
+    min-height: 16px;
+}
+
+.hidden {
+    display: none;
+}
