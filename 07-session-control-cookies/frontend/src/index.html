@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="script.js"></script>
+        <title>Login</title>
+    </head>
+    <body>
+        <main>
+            <div class="login-container">
+                <h1>Login</h1>
+                <div class="login-inputs-container">
+                    <input type="text" name="username" id="username-input" placeholder="Username" />
+                    <input type="password" name="password" id="password-input" placeholder="Password" />
+                </div>
+                <span id="status-message"></span>
+                <button type="button" id="login-button">Login</button>
+                <span id="logout-status"></span>
+            </div>
+            <!-- <div>
+                <h1>Register</h1>
+                <div class="login-inputs-container">
+                    <input type="text" name="username" id="username-input" placeholder="Username" />
+                    <input type="password" name="password" id="password-input" placeholder="Password" />
+                    <input type="password" name="confirm-password" id="confirm-password-input" placeholder="Confirm password" />
+                </div>
+                <span id="status-message"></span>
+                <button type="button" id="register-button">Register</button>
+            </div> -->
+            <div class="token-verification-container hidden">
+                <h1>Verify My Token</h1>
+                <div class="token-verification-inputs-container">
+                    <button type="button" id="verify-button">Verify Token</button>
+                    <button type="button" id="logout-button">Logout</button>
+                </div>
+                <span id="verification-status"></span>
+            </div>
+        </main>
+        <input type="hidden" name="token" id="token-holder" />
+    </body>
+</html>
