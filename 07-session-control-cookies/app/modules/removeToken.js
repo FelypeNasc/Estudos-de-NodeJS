@@ -1,8 +1,8 @@
 const fs = require("fs");
 
-function removeToken( _token) {
+function removeToken(_token) {
     const token = _token;
-    const filePath = "../backend/data/users.json";
+    const filePath = "../app/data/users.json";
     const users = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const user = users.find((user) => user.token === token);
     if (user) {

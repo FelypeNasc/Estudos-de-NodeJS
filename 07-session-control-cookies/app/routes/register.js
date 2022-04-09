@@ -3,15 +3,21 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
+// middlewares
+
 // modules
-const verifyPassword = require("../modules/verifyPassword");
-const createToken = require("../modules/createToken");
+const userExists = require("../modules/userExists");
+const registerUser = require("../modules/registerUser");
 
 // route
 router.post("/", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    if (verifyPassword(username, password)) {
+    if (userExists(username)) {
+        res.status(409).json({
+            error: "User already exists",
+        });
+    } else {
         try {
             const token = createToken(username);
             res.status(200).json({
@@ -23,10 +29,6 @@ router.post("/", (req, res) => {
                 error: "Internal server error",
             });
         }
-    } else {
-        res.status(401).json({
-            error: "Invalid username or password",
-        });
     }
 });
 

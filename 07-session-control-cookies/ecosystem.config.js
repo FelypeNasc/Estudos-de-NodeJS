@@ -1,16 +1,10 @@
 module.exports = {
-  apps: [
-    {
-      name: "Frontend",
-      cwd: "frontend",
-      script: "app.js",
-      watch: true,
-    },
-    {
-      name: "Backend",
-      cwd: "backend",
-      script: "server.js",
-      watch: true,
-    },
-  ],
+    apps: [
+        {
+            name: "App",
+            cwd: "app",
+            script: "app.js",
+            watch: true,
+        },
+    ],
 };
