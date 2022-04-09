@@ -8,7 +8,7 @@ const removeToken = require("../modules/removeToken");
 
 // route
 router.post("/", (req, res) => {
-    const token = req.body.token;
+    const token = req.cookies.token;
     if (removeToken(token) !== false) {
         res.status(200).json({
             message: "Logout successful",
@@ -18,6 +18,6 @@ router.post("/", (req, res) => {
             error: "Invalid username or token",
         });
     }
-}); 
+});
 
 module.exports = router;
